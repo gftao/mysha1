@@ -30,7 +30,7 @@ func rsaSignSha1Base64(privSign *rsa.PrivateKey, data []byte) (string, error) {
 	return base64.StdEncoding.EncodeToString(ciphertext), nil
 }
 
-//privKey 为pem秘钥源文件,转成byte格式传入、body为要加密的字符串。
+//privKey 为pem秘钥源文件,转成[]byte格式传入、body为要加密的字符串。
 func (ms *MySha) RsaSignSha1AndBase64(privKey []byte, body []byte) (string, error) {
 
 	block, _ := pem.Decode([]byte(privKey))
