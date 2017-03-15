@@ -8,7 +8,6 @@ import (
 	"crypto/x509"
 	"encoding/base64"
 	"encoding/pem"
-	//"fmt"
 )
 
 type MySha struct {
