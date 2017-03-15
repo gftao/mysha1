@@ -8,7 +8,7 @@ import (
 	"crypto/x509"
 	"encoding/base64"
 	"encoding/pem"
-	"fmt"
+	//"fmt"
 )
 
 type MySha struct {
@@ -18,7 +18,7 @@ func New() *MySha {
 	return &MySha{}
 }
 
-func RsaSignSha1Base64(privSign *rsa.PrivateKey, data []byte) (string, error) {
+func rsaSignSha1Base64(privSign *rsa.PrivateKey, data []byte) (string, error) {
 	h := sha1.New()
 	h.Write([]byte(data))
 	digest := h.Sum(nil)
@@ -37,9 +37,9 @@ func (ms *MySha) RsaSignSha1AndBase64(privKey []byte, body []byte) (string, erro
 	block, _ := pem.Decode([]byte(privKey))
 	rasPK, err := x509.ParsePKCS1PrivateKey(block.Bytes)
 	if err != nil {
-		fmt.Println("x509 parse failed: ", err)
+		//fmt.Println("x509 parse failed: ", err)
 		return "", err
 	}
 
-	return RsaSignSha1Base64(rasPK, []byte(body))
+	return rsaSignSha1Base64(rasPK, []byte(body))
 }
