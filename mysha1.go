@@ -37,7 +37,7 @@ func (ms *MySha) RsaSignSha1AndBase64(privKey []byte, body []byte) (string, erro
 	block, _ := pem.Decode([]byte(privKey))
 	rasPK, err := x509.ParsePKCS1PrivateKey(block.Bytes)
 	if err != nil {
-		//fmt.Println("x509 parse failed: ", err)
+	
 		return "", err
 	}
 
